@@ -30,14 +30,25 @@
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
 		var PieLegend = PieChart.addLegend (100, 100, 60, 300, "Left");
-		        // draw a chart without autoplaying the storyboard
-		var PieStoryboard = PieChart.setStoryboard("Race");
-		PieStoryboard.autoplay = false;
-		myChart.draw();
-	// play button click handler
-		function play() {
-		PieStoryboard.startAnimation();
-                    }});
+// draw a chart and begin animation
+var PieStoryboard = PieChart.setStoryboard("Race Year");
+myChart.draw();
+
+// play button click handler
+function play() {
+    PieStoryboard.playAnimation();
+}
+
+// pause button click handler
+function pause() {
+    PieStoryboard.pauseAnimation();
+}
+
+// stop button click handler
+function pause() {
+    PieStoryboard.stopAnimation();
+}
+});
 
     </script>
 </html>
