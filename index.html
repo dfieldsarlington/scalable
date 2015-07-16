@@ -10,9 +10,10 @@
 <style>
 #PieChart {    
 	float: left;
-	
+	top:10px;
+	left:10px;
 	width:100%;
-	height: 100%;
+	height: 800px;
 	background-color: rgb(252,245,223);
 }
 </style>
@@ -25,7 +26,7 @@
             d3.csv("https://raw.githubusercontent.com/dfieldsarlington/test/gh-pages/race.csv", function (data) {
 		dimple.filterData(data, "Race Year", "1960");
 		var PieChart = new dimple.chart(svgPie, data);
-
+		PieChart.setBounds(10, 20, 460, 360)
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
