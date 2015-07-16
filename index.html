@@ -30,10 +30,14 @@
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
 		var PieLegend = PieChart.addLegend (100, 100, 60, 300, "Left");
-		// Create a storyboard for Race Year
+		        // draw a chart without autoplaying the storyboard
 		var PieStoryboard = PieChart.setStoryboard("Race");
-		PieStoryboard.categoryFields = ["Race Year"];
-		PieChart.draw();
-                    });
+		PieStoryboard.autoplay = false;
+		myChart.draw();
+	// play button click handler
+		function play() {
+		PieStoryboard.startAnimation();
+                    }});
+
     </script>
 </html>
