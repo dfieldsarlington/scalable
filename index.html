@@ -29,8 +29,10 @@
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
-		var PieLegend = PieChart.addLegend (30%, "Left");
-		PieChart.setStoryboard("Race Year");
+		var PieLegend = PieChart.addLegend (100, 100, 60, 300, "Left");
+		// Create a storyboard for Race Year
+		var PieStoryboard = PieChart.setStoryboard("Race");
+		PieStoryboard.categoryFields = ["Race Year"];
 		PieChart.draw();
                     });
         
