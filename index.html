@@ -18,6 +18,7 @@
 	height:400px;
 	background-color: rgb(252,245,223);
 }
+#
 </style>
 <div id="PieChart"></div>
 <script type="text/javascript">
@@ -32,8 +33,7 @@
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
 		d3.legend.color()
-		var PieLegend = PieChart.addLegend (100, 100, 60, 300, "Left");
-		// Create a storyboard for Race Year
+		
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
 		PieChart.draw();
