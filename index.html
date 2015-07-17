@@ -7,6 +7,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+<script src="https://raw.githubusercontent.com/susielu/d3-legend/master/d3-legend.min.js"></script>
+
 <style>
 #PieChart {    
 	float: left;
@@ -29,6 +31,7 @@
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
+		d3.legend.color()
 		var PieLegend = PieChart.addLegend (100, 100, 60, 300, "Left");
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
