@@ -7,7 +7,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
-<script src="https://raw.githubusercontent.com/susielu/d3-legend/master/d3-legend.min.js"></script>
 
 <style>
 #PieChart {    
@@ -18,9 +17,17 @@
 	height:400px;
 	background-color: rgb(252,245,223);
 }
-#
+#PieLegend {
+padding: 1.5em 0 0 1.5em;
+    border-top-width: 15px;
+    border-top-style: solid;
+    font-size: .75em;
+    width: 10%;
+    padding-left: 0;
+    padding-right: 0;
+}
 </style>
-<div id="PieChart"></div>
+<div id="PieChart"><div id="PieLegend"></div></div>
 <script type="text/javascript">
 // In version 1.1.0 it's possible to initialise any size parameter with a
         // % value as well as pixels
@@ -32,8 +39,8 @@
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
-		d3.legend.color()
-		
+		var PieLegend = PieChart.addLegend ("#PieLegend", 50%, 50%);
+		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
 		PieChart.draw();
