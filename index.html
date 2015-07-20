@@ -19,15 +19,6 @@
 	background-color: rgb(252,245,223);
 }
 
-#PieLegend {    
-	float: right;
-	top:10px;
-	left:10px;
-	width:10%;
-	height:150px;
-	background-color: rgb(50,245,223);
-}
-
 #income {    
 	float: left;
 	top:10px;
@@ -38,7 +29,7 @@
 }	
 
 </style>
-<div id="PieChart"><div id="PieLegend"></div></div>
+<div id="PieChart"></div></div>
 <div id="income"></div>
 <script type="text/javascript">
 // In version 1.1.0 it's possible to initialise any size parameter with a
@@ -48,7 +39,7 @@
             d3.csv("https://raw.githubusercontent.com/dfieldsarlington/test/gh-pages/race.csv", function (data) {
 		dimple.filterData(data, "Race Year", "1960");
 		var PieChart = new dimple.chart(svgPie, data);
-		PieChart.setBounds(20, 20, 300, 300)
+		PieChart.setBounds(20, 20, "#PieChart")
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
