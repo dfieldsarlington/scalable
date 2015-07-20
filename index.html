@@ -51,6 +51,7 @@
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
+		var svgPieLegend = dimple.newSvg(#"PieLegend", "100%", "100%");
 		var PieLegend = PieChart.addLegend (300, 20, 90, 300, "left");
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
