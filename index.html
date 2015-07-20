@@ -18,13 +18,12 @@
 	background-color: rgb(252,245,223);
 }
 #PieLegend {
-padding: 1.5em 0 0 1.5em;
-    border-top-width: 15px;
-    border-top-style: solid;
-    font-size: .75em;
-    width: 50%;
-    padding-left: 0;
-    padding-right: 0;
+	float: left;
+	top:10px;
+	left:10px;
+	width:200px;
+	height:200px;
+	background-color: rgb(252,245,223);
 }
 #income {    
 	float: left;
@@ -49,7 +48,7 @@ padding: 1.5em 0 0 1.5em;
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
-		var PieLegend = PieChart.addLegend (100, 100, 60, 300, "Left");
+		var PieLegend = PieChart.addLegend (100, 100, 60, 300, "#PieLegend");
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
