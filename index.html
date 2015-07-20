@@ -17,14 +17,7 @@
 	height:400px;
 	background-color: rgb(252,245,223);
 }
-#PieLegend {
-	float: left;
-	top:10px;
-	left:10px;
-	width:200px;
-	height:200px;
-	background-color: rgb(252,245,223);
-}
+
 #income {    
 	float: left;
 	top:10px;
@@ -35,7 +28,7 @@
 }	
 
 </style>
-<div id="PieChart"><div id="PieLegend"></div></div>
+<div id="PieChart"></div>
 <div id="income"></div>
 <script type="text/javascript">
 // In version 1.1.0 it's possible to initialise any size parameter with a
@@ -48,8 +41,7 @@
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
-		var svgPieLegend = dimple.newSvg("#PieLegend", "100%", "100%");
-		PieLegend = PieChart.addLegend (100, 100, 60, 300, "#PieLegend");
+		var PieLegend = PieChart.addLegend (50, 50, 60, 300, "Left");
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
@@ -96,5 +88,6 @@
       });
         </script>
 	<script type="text/javascript">
+	
 	
 </html>
