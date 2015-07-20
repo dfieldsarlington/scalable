@@ -47,12 +47,12 @@
             d3.csv("https://raw.githubusercontent.com/dfieldsarlington/test/gh-pages/race.csv", function (data) {
 		dimple.filterData(data, "Race Year", "1960");
 		var PieChart = new dimple.chart(svgPie, data);
-		PieChart.setBounds(20, 20, 300, 300)
+		
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
-		var svgPieLegend = dimple.newSvg(#"PieLegend", "100%", "100%");
-		var PieLegend = PieChart.addLegend (300, 20, 90, 300, "left");
+		var PieLegend = new dimple.chart(svg, data);
+		 PieLegend = PieChart.addLegend;
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
