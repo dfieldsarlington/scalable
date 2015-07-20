@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
-<script src="d3.legend.js"></script>
+
 
 <style>
 #PieChart {    
@@ -27,12 +27,6 @@
 	height:150px;
 	background-color: rgb(50,245,223);
 }
-{                                                   /* NEW */
-        font-size: 12px;                                          /* NEW */
-      }                                                           /* NEW */
-      rect {                                                      /* NEW */
-        stroke-width: 2;                                          /* NEW */
-      }          
 
 #income {    
 	float: left;
@@ -54,36 +48,12 @@
             d3.csv("https://raw.githubusercontent.com/dfieldsarlington/test/gh-pages/race.csv", function (data) {
 		dimple.filterData(data, "Race Year", "1960");
 		var PieChart = new dimple.chart(svgPie, data);
-		
+		PieChart.setBounds(20, 20, 300, 300)
 		PieChart.addMeasureAxis("p", "Race Percent");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
-		var legendRectSize = 18;                                  // NEW
-        var legendSpacing = 4;                                    // NEW
-	var legend = svg.selectAll('#PieLegend')                     // NEW
-          .data(color.domain())                                   // NEW
-          .enter()                                                // NEW
-          .append('g')                                            // NEW
-          .attr('class', 'legend')                                // NEW
-          .attr('transform', function(d, i) {                     // NEW
-            var height = legendRectSize + legendSpacing;          // NEW
-            var offset =  height * color.domain().length / 2;     // NEW
-            var horz = -2 * legendRectSize;                       // NEW
-            var vert = i * height - offset;                       // NEW
-            return 'translate(' + horz + ',' + vert + ')';        // NEW
-          });                                                     // NEW
-
-        legend.append('rect')                                     // NEW
-          .attr('width', legendRectSize)                          // NEW
-          .attr('height', legendRectSize)                         // NEW
-          .style('fill', color)                                   // NEW
-          .style('stroke', color);                                // NEW
-          
-        legend.append('text')                                     // NEW
-          .attr('x', legendRectSize + legendSpacing)              // NEW
-          .attr('y', legendRectSize - legendSpacing)              // NEW
-          .text(function(d) { return d; });                       // NEW
-
+		
+		var PieLegend = PieChart.addLegend (300, 20, 90, 300, "left");
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
