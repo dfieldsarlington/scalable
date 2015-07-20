@@ -52,7 +52,7 @@
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
 		var PieLegend = new dimple.chart(svg, data);
-		 PieLegend = PieChart.addLegend;
+		 PieLegend = PieChart.addLegend ("#PieLegend");
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
