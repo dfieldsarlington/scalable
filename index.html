@@ -17,13 +17,7 @@
 	height:400px;
 	background-color: rgb(252,245,223);
 }
-#PieSpace  {
-	float: right;
-	top:10px;
-	left:10px;
-	width:10%;
-	height:100px;
-	background-color: rgb(252,245,223);
+
 #income {    
 	float: left;
 	top:10px;
@@ -34,12 +28,12 @@
 }	
 
 </style>
-<div id="PieChart"><div id="PieSpace"></div></div>
+<div id="PieChart"></div>
 <div id="income"></div>
 <script type="text/javascript">
 // In version 1.1.0 it's possible to initialise any size parameter with a
         // % value as well as pixels
-        var svgPie = dimple.newSvg("#PieChart", "100%", "100%");
+        var svgPie = dimple.newSvg("#PieChart", "80%", "80%");
 		var PieChart;
             d3.csv("https://raw.githubusercontent.com/dfieldsarlington/test/gh-pages/race.csv", function (data) {
 		dimple.filterData(data, "Race Year", "1960");
