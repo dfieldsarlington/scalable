@@ -32,7 +32,7 @@
 <div id="PieChart"></div></div>
 <div id="income"></div>
 <script type="text/javascript">
-var svgPie = dimple.newSvg("#PieChart", "80%", "80%", viewBox= "0 0 150 100");
+var svgPie = dimple.newSvg("#PieChart", "80%", "80%");
 		var PieChart;
             d3.csv("https://raw.githubusercontent.com/dfieldsarlington/test/gh-pages/race.csv", function (data) {
 		dimple.filterData(data, "Race Year", "1960");
@@ -42,7 +42,7 @@ var svgPie = dimple.newSvg("#PieChart", "80%", "80%", viewBox= "0 0 150 100");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
 		
-		var PieLegend = PieChart.addLegend (200, 5, 85, 290, "right");
+		var PieLegend = PieChart.addLegend (25, 300, 85, 290, "right");
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
