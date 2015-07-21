@@ -32,7 +32,7 @@
 <div id="PieChart"></div></div>
 <div id="income"></div>
 <script type="text/javascript">
-var svgPie = dimple.newSvg("#PieChart", "80%", "80%");
+var svgPie = dimple.newSvg("#PieChart", "80%", "80%", viewBox= "0 0 150 100");
 		var PieChart;
             d3.csv("https://raw.githubusercontent.com/dfieldsarlington/test/gh-pages/race.csv", function (data) {
 		dimple.filterData(data, "Race Year", "1960");
