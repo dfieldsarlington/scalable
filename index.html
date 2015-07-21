@@ -16,6 +16,7 @@
 	width:35%px;
 	height:350px;
 	background-color: rgb(252,245,223);
+	vertical-align: bottom;
 }
 
 #income {    
@@ -41,7 +42,7 @@ var svgPie = dimple.newSvg("#PieChart", "80%", "80%");
 		var ring = PieChart.addSeries("Race", dimple.plot.pie);
 		ring.innerRadius = "50%";
 		
-		var PieLegend = PieChart.addLegend (150, 5, 85, 290, "left");
+		var PieLegend = PieChart.addLegend (150, 5, 85, 290, "right");
 		// Create a storyboard for Race Year
 		var PieStoryboard = PieChart.setStoryboard("Race");
 		PieStoryboard.categoryFields = ["Race Year"];
