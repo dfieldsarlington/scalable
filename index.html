@@ -13,8 +13,8 @@
 	float: left;
 	top:10px;
 	left:10px;
-	width:35%px;
-	height:350px;
+	width:50%px;
+
 	background-color: rgb(252,245,223);
 	
 }
@@ -23,7 +23,7 @@
 	float: right;
 	top:10px;
 	left:10px;
-	width:35%;
+	width:%;
 	height:400px;
 	background-color: rgb(252,245,223);
 }	
@@ -36,7 +36,7 @@
 var svgLine = dimple.newSvg("#LineChart", 80%, 80%);
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/totpop.csv", function (data) {
       data = dimple.filterData(data, "totyear")
-      var LineChart = new dimple.chart(svg, data);
+      var LineChart = new dimple.chart(svgLine, data);
       
       var x = LineChart.addCategoryAxis("x", "totyear");
       x.addOrderRule("Date");
