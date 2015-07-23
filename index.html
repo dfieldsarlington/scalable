@@ -37,7 +37,8 @@ var svg = dimple.newSvg("#LineChart", "80%", "80%");
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/totpop.csv", function (data) {
       data = dimple.filterData(data, "totyear", "1960");
       var LineChart = new dimple.chart(svgLine, data);
-     
+	  var s = LineChart.addSeries("totpop", dimple.plot.line);
+      s.interpolation = "cardinal";
       var x = LineChart.addCategoryAxis("x", "totyear");
       x.addOrderRule("Date");
       LineChart.addMeasureAxis("y", "totpop");
