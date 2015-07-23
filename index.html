@@ -33,7 +33,7 @@
 <div id="LineChart"></div></div>
 <script type="text/javascript">
 //Start Line Chart
-var svg = dimple.newSvg("#LineChart", "80%", "80%");
+var svgLine = dimple.newSvg("#LineChart", "80%", "80%");
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/totpop.csv", function (data) {
       data = dimple.filterData(data, "totyear", "1960");
       var LineChart = new dimple.chart(svgLine, data);
