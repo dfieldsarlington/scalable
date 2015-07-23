@@ -25,7 +25,7 @@ var svgLine = dimple.newSvg("#LineChart", 80%, 80%);
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/totpop.csv", function (data) {
       data = dimple.filterData(data, "totyear")
       var LineChart = new dimple.chart(svgLine, data);
-      
+      LineChart.setBounds(60, 30, 505, 305);
       var x = LineChart.addCategoryAxis("x", "totyear");
       x.addOrderRule("Date");
       LineChart.addMeasureAxis("y", "totpop");
