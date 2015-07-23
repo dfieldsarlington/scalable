@@ -33,17 +33,15 @@
 <div id="LineChart"></div></div>
 <script type="text/javascript">
 //Start Line Chart
-var svgLine = dimple.newSvg("#LineChart", "80%", "80%");
+var svgLine = dimple.newSvg("#LineChart", 80%, 80%);
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/totpop.csv", function (data) {
-      data = dimple.filterData(data, "totyear", "1960");
-      var LineChart = new dimple.chart(svgLine, data);
-	  var s = LineChart.addSeries("totpop", dimple.plot.line);
-      s.interpolation = "cardinal";
+      data = dimple.filterData(data, "totyear")
+      var LineChart = new dimple.chart(svg, data);
+      
       var x = LineChart.addCategoryAxis("x", "totyear");
       x.addOrderRule("Date");
       LineChart.addMeasureAxis("y", "totpop");
-      
-      LineChart.addLegend(60, 10, 500, 20, "right");
+      var s = LineChart.addSeries(null, dimple.plot.line);
       LineChart.draw();
     });
 </script>
