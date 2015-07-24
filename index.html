@@ -8,11 +8,11 @@
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
 
 <style>
-#LineChart {    
+#PieChart {    
 	float: left;
 	top:10px;
 	left:10px;
-	width:600px;
+	width:50%;
 	height: 600px;
 	background-color: rgb(252,245,223);
 }
@@ -21,19 +21,62 @@
 <body>
 <div id="LineChart"></div>
 <script type="text/javascript">
-//Start Line Chart
-var svgLine = dimple.newSvg("#LineChart", "80%", "80%");
-    d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/totpop.csv", function (data) {
-      dimple.filterData(data, "Year", "1960");
-      var LineChart = new dimple.chart(svgLine, data);
-      var x = LineChart.addCategoryAxis("x", "Year");
-      x.addOrderRule("Year");
-      LineChart.addMeasureAxis("y", "Population");
-      var s = LineChart.addSeries(null, dimple.plot.line);
-      s.interpolation = "cardinal";
-      s.lineMarkers = true;
-      LineChart.draw();
-    });
+//Start Pie Chart
+var svgPie = dimple.newSvg("#PieChart", "80%", "80%");
+		var PieChart;
+            d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/race.csv", function (data) {
+		dimple.filterData(data, "Race Year", "1960");
+		var PieChart = new dimple.chart(svgPie, data);
+	
+		PieChart.addMeasureAxis("p", "Race Percent");
+		var ring = PieChart.addSeries("Race", dimple.plot.pie);
+		ring.innerRadius = "50%";
+		
+		var PieLegend = PieChart.addLegend (80, 230, 85, 290, "left");
+		// Create a storyboard for Race Year
+		var PieStoryboard = PieChart.setStoryboard("Race");
+		PieStoryboard.categoryFields = ["Race Year"];
+		PieChart.draw();
+         // This is a critical step.  By doing this we orphan the legend. This
+        // means it will not respond to graph updates.  Without this the legend
+        // will redraw when the chart refreshes removing the unchecked item and
+        // also dropping the events we define below.
+        PieChart.legends = [];
+
+        // Get a unique list of values to use when filtering
+        var filterValues = dimple.getUniqueValues(data, "Race");
+        // Get all the rectangles from our now orphaned legend
+        PieLegend.shapes.selectAll("rect")
+          // Add a click event to each rectangle
+          .on("click", function (e) {
+            // This indicates whether the item is already visible or not
+            var hide = false;
+            var newFilters = [];
+            // If the filters contain the clicked shape hide it
+            filterValues.forEach(function (f) {
+              if (f === e.aggField.slice(-1)[0]) {
+                hide = true;
+              } else {
+                newFilters.push(f);
+              }
+            });
+            // Hide the shape or show it
+            if (hide) {
+              d3.select(this).style("opacity", 0.2);
+            } else {
+              newFilters.push(e.aggField.slice(-1)[0]);
+              d3.select(this).style("opacity", 0.8);
+            }
+            // Update the filters
+            filterValues = newFilters;
+            // Filter the data
+            PieChart.data = dimple.filterData(data, "Race", filterValues);
+            // Passing a duration parameter makes the chart animate. Without
+            // it there is no transition
+            PieChart.draw(800);
+          });
+		  
+      });
 </script>
 </body>	
 </html>
