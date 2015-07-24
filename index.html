@@ -31,7 +31,7 @@ var svgLine = dimple.newSvg("#LineChart", "80%", "80%");
       LineChart.addMeasureAxis("y", "Population");
       var s = LineChart.addSeries(null, dimple.plot.line);
       s.interpolation = "cardinal";
-      LineChart.addLegend(60, 10, 500, 20, "right");
+      s.lineMarkers = true;
       LineChart.draw();
     });
 </script>
