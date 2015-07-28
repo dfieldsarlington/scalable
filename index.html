@@ -33,15 +33,15 @@
         ScatterChart = new dimple.chart(svgScatter);
         // Create a standard bubble of SKUs by Price and Sales Value
         // We are coloring by Owner as that will be the key in the legend
-        x = ScatterChart.addcategoryAxis("x", "Sector");
+        x = ScatterChart.addcategoryAxis("x", "Employees");
         y1 = ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
-		y2 = ScatterChart.addMeasureAxis("y", "Employees");
+		y2 = ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
         s1 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y1]);
 		s1.data = [
-		{"Sector" : "Accommodation and Food Services", "Average Weekly Wage" : "367", "Employees" : "768", "Year" : 2013}];
+		{"Average Weekly Wage" : 367, "Employees" : 768, "Year" : 2013}];
 		s2 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y2]);
 		s2.data = [
-		{"Sector" : "Accommodation and Food Services", "Average Weekly Wage" : "376", "Employees" : "728", "Year" : 2012}];
+		{"Average Weekly Wage" : 376, "Employees" : 728, "Year" : 2012}];
         ScatterChart.draw();
           
    
