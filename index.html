@@ -21,18 +21,24 @@
 <body>
 <div id="ScatterChart"></div>
   <script type="text/javascript">
-    var svgScatter = dimple.newSvg("#ScatterChart", 590, 400);
+    var svgScatter = dimple.newSvg("#ScatterChart", 590, 400),
+	chart = null,
+    s1 = null,
+    s2 = null,
+    x = null,
+    y = null;
       d3.csv("https://raw.githubusercontent.com/dfieldsarlington/economicdevelopment/gh-pages/employment_sector_05_13.csv", function (data) {
         // Create the chart
         var ScatterChart = new dimple.chart(svgScatter, data);
         // Create a standard bubble of SKUs by Price and Sales Value
         // We are coloring by Owner as that will be the key in the legend
-        ScatterChart.addMeasureAxis("x", "Employees");
-        ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
+        x = ScatterChart.addcategoryAxis("x", "Employees");
+        y = ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
 		ScatterChart.setBounds(60, 30, 420, 330)
-        ScatterChart.addSeries("Sector", dimple.plot.bubble, [x, y]);
+        s1 = ScatterChart.addSeries("Sector", dimple.plot.bubble, [x, y]);
+		s2 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y]);
         var ScatterLegend = ScatterChart.addLegend(530, 100, 60, 300, "Right");
-		var s1 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y]);
+		
         ScatterChart.draw();
         // This is a critical step.  By doing this we orphan the legend. This
         // means it will not respond to graph updates.  Without this the legend
