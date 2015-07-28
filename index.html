@@ -21,30 +21,56 @@
 <body>
 <div id="ScatterChart"></div>
   <script type="text/javascript">
-    var svgScatter = dimple.newSvg("#ScatterChart", 590, 400),
-	ScatterChart = null,
-    s1 = null,
-    s2 = null,
-    x = null,
-    y1 = null,
-	y2 = null;
-   
+    var svgScatter = dimple.newSvg("#ScatterChart", 590, 400);
+      d3.csv("https://raw.githubusercontent.com/dfieldsarlington/economicdevelopment/gh-pages/employment%20test.csv", function (data) {
         // Create the chart
-        ScatterChart = new dimple.chart(svgScatter);
+        var ScatterChart = new dimple.chart(svgScatter, data);
         // Create a standard bubble of SKUs by Price and Sales Value
         // We are coloring by Owner as that will be the key in the legend
-        x = ScatterChart.addcategoryAxis("x", "Employees");
-        y1 = ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
-		y2 = ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
-        s1 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y1]);
-		s1.data = [
-		{"Average Weekly Wage" : 367, "Employees" : 768, "Year" : 2013}];
-		s2 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y2]);
-		s2.data = [
-		{"Average Weekly Wage" : 376, "Employees" : 728, "Year" : 2012}];
+        ScatterChart.addMeasureAxis("x", "Employees");
+        ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
+		ScatterChart.setBounds(60, 30, 420, 330)
+        ScatterChart.addSeries("Sector", dimple.plot.bubble);
+        var ScatterLegend = ScatterChart.addLegend(530, 100, 60, 300, "Right");
         ScatterChart.draw();
-          
-   
+        // This is a critical step.  By doing this we orphan the legend. This
+        // means it will not respond to graph updates.  Without this the legend
+        // will redraw when the chart refreshes removing the unchecked item and
+        // also dropping the events we define below.
+        ScatterChart.legends = [];
+        // Get a unique list of Owner values to use when filtering
+        var filterValues = dimple.getUniqueValues(data, "Sector");
+        // Get all the rectangles from our now orphaned legend
+        ScatterLegend.shapes.selectAll("rect")
+          // Add a click event to each rectangle
+          .on("click", function (e) {
+            // This indicates whether the item is already visible or not
+            var hide = false;
+            var newFilters = [];
+            // If the filters contain the clicked shape hide it
+            filterValues.forEach(function (f) {
+              if (f === e.aggField.slice(-1)[0]) {
+                hide = true;
+              } else {
+                newFilters.push(f);
+              }
+            });
+            // Hide the shape or show it
+            if (hide) {
+              d3.select(this).style("opacity", 0.2);
+            } else {
+              newFilters.push(e.aggField.slice(-1)[0]);
+              d3.select(this).style("opacity", 0.8);
+            }
+            // Update the filters
+            filterValues = newFilters;
+            // Filter the data
+            ScatterChart.data = dimple.filterData(data, "Sector", filterValues);
+            // Passing a duration parameter makes the chart animate. Without
+            // it there is no transition
+            ScatterChart.draw(800);
+          });
+      });
   </script>
   </body>
   </html>
