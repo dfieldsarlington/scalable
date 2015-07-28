@@ -22,26 +22,28 @@
 <div id="ScatterChart"></div>
   <script type="text/javascript">
     var svgScatter = dimple.newSvg("#ScatterChart", 590, 400),
-	chart = null,
+	ScatterChart = null,
     s1 = null,
     s2 = null,
     x = null,
-    y = null;
-      d3.csv("https://raw.githubusercontent.com/dfieldsarlington/economicdevelopment/gh-pages/employment_sector_05_13.csv", function (data) {
+    y1 = null,
+	y2 = null;
+   
         // Create the chart
-        var ScatterChart = new dimple.chart(svgScatter, data);
+        ScatterChart = new dimple.chart(svgScatter);
         // Create a standard bubble of SKUs by Price and Sales Value
         // We are coloring by Owner as that will be the key in the legend
-        x = ScatterChart.addcategoryAxis("x", "Employees");
-        y = ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
-		ScatterChart.setBounds(60, 30, 420, 330)
-        s1 = ScatterChart.addSeries("Sector", dimple.plot.bubble, [x, y]);
-		s2 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y]);
-        var ScatterLegend = ScatterChart.addLegend(530, 100, 60, 300, "Right");
-		
+        x = ScatterChart.addcategoryAxis("x", "Sector");
+        y1 = ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
+		y2 = ScatterChart.addMeasureAxis("y", "Employees");
+        s1 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y1]);
+		s1.data = [
+		{"Sector" : "Accommodation and Food Services", "Average Weekly Wage" : "367", "Employees" : "768", "Year" : 2013}];
+		s2 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y2]);
+		s2.data = [
+		{"Sector" : "Accommodation and Food Services", "Average Weekly Wage" : "376", "Employees" : "728", "Year" : 2012}];
         ScatterChart.draw();
-       
-          });
+          
    
   </script>
   </body>
