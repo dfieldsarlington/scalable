@@ -30,9 +30,9 @@
         ScatterChart.addMeasureAxis("x", "Employees");
         ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
 		ScatterChart.setBounds(60, 30, 420, 330)
-        ScatterChart.addSeries("Sector", dimple.plot.bubble);
+        ScatterChart.addSeries("Sector", dimple.plot.bubble, [x, y]);
         var ScatterLegend = ScatterChart.addLegend(530, 100, 60, 300, "Right");
-		var s1 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y1])
+		var s1 = ScatterChart.addSeries("Year", dimple.plot.bubble, [x, y]);
         ScatterChart.draw();
         // This is a critical step.  By doing this we orphan the legend. This
         // means it will not respond to graph updates.  Without this the legend
