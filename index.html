@@ -39,9 +39,9 @@
       myChart.setBounds(60, 40, 500, 320);
       
       // Add the main chart axes
-      myChart.addCategoryAxis("x", "Sector");
+      myChart.addCategoryAxis("x", "Employees");
       myChart.addMeasureAxis("y", "Average Weekly Wage");
-      myChart.addMeasureAxis("z", "Employees");
+      myChart.addMeasureAxis("z", "[1000]");
       
       // Draw bubbles by SKU colored by brand
       var s = myChart.addSeries(["Year", "Sector"], dimple.plot.bubble);
@@ -108,8 +108,8 @@
           .style("fill", stroke);
         
         // Filter the data for the selected brand and sku
-        var hoverData = dimple.filterData(data, "Year", e.xValue);
-        hoverData = dimple.filterData(hoverData, "Sector", e.seriesValue);
+        var hoverData = dimple.filterData(data, "Sector", e.xValue);
+        hoverData = dimple.filterData(hoverData, "Year", e.seriesValue);
         
         // Create a new mini chart of Unit Sales over Months
         tipChart = new dimple.chart(svg,  hoverData);
