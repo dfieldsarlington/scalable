@@ -29,9 +29,9 @@
         // We are coloring by Owner as that will be the key in the legend
         ScatterChart.addMeasureAxis("x", "Employees");
         ScatterChart.addMeasureAxis("y", "Average Weekly Wage");
-		ScatterChart.setBounds(60, 30, 420, 330)
+		ScatterChart.setBounds(60, 30, 400, 310)
         ScatterChart.addSeries("Sector", dimple.plot.bubble);
-        var ScatterLegend = ScatterChart.addLegend(530, 100, 60, 300, "Right");
+        var ScatterLegend = ScatterChart.addLegend(600, 100, 50, 350, "Right");
         ScatterChart.draw();
         // This is a critical step.  By doing this we orphan the legend. This
         // means it will not respond to graph updates.  Without this the legend
