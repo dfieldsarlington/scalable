@@ -108,8 +108,8 @@
           .style("fill", stroke);
         
         // Filter the data for the selected brand and sku
-        var hoverData = dimple.filterData(data, "Sector", e.xValue);
-        hoverData = dimple.filterData(hoverData, "Year", e.seriesValue);
+        var hoverData = dimple.filterData(data, "Year", e.xValue);
+        hoverData = dimple.filterData(hoverData, "Sector", e.seriesValue);
         
         // Create a new mini chart of Unit Sales over Months
         tipChart = new dimple.chart(svg,  hoverData);
