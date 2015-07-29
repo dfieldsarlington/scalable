@@ -49,13 +49,15 @@
       // to note that the string here "Unit Sales" is NOT in the data.  Any string
       // not in the data is just used to apply a label which can be used for colouring
       // as it is here and will also appear in tool tips
-     
+      var bars = chart.addSeries("Number of Households", dimple.plot.bar, [x,y2]);
       // Use a simple line by metric for the other measures
       var lines = chart.addSeries("Average Household Size", dimple.plot.line, [x,y1]);
 		lines.interpolation = "cardinal";
       // Do a bit of styling to make it look nicer
       lines.lineMarkers = true;
       bars.barGap = 0.25;
+      // Colour the bars manually so they don't overwhelm the lines
+      chart.assignColor("Year", "black", "black", 0.15);
 
       x.dateParseFormat = "%Y";
       x.addOrderRule("Date");
