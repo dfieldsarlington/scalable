@@ -49,8 +49,8 @@
       // to note that the string here "Unit Sales" is NOT in the data.  Any string
       // not in the data is just used to apply a label which can be used for colouring
       // as it is here and will also appear in tool tips
-      var bars = chart.addSeries(null, dimple.plot.bar, [x,y1], "red");
-	  chart.assignColor("bars", "#B8B5B2");
+      var bars = chart.addSeries(null, dimple.plot.bar, [x,y1],);
+	  chart.assignColor("Number of Households", "#B8B5B2");
       // Use a simple line by metric for the other measures
       var s = chart.addSeries(null, dimple.plot.line, [x, y2]);
       s.interpolation = "cardinal";
