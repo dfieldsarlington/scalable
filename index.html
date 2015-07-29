@@ -21,38 +21,60 @@
 <body>
 <div id="ScatterChart"></div>
    <script type="text/javascript">
-    var svg = dimple.newSvg("#ScatterChart", 590, 400);
-      d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/households2.csv", function (data) {
-        
-        // Filter the data for a single channel
-        data = dimple.filterData(data, "Year");
-        
-        // Create the chart
-        var myChart = new dimple.chart(svg, data);
-        myChart.setBounds(60, 30, 470, 300)
-        
-        // Add an x and 2 y-axes.  When using multiple axes it's
-        // important to assign them to variables to pass to the series
-        var x = myChart.addCategoryAxis("x", "Year");
-        var y1 = myChart.addMeasureAxis("y", "Number of Households");
-        var y2 = myChart.addMeasureAxis("y", "Average Household Size");
+      var svg = dimple.newSvg("#ScatterChart", 800, 400);
 
-        // Color the sales bars to be highly transparent
-        myChart.assignColor("Number of Households", "#222222", "#000000", 0.1);
-        
-        // Add the bars mapped to the second y axis
-        myChart.addSeries("Average Household Size", dimple.plot.bar, [x, y2]);
-        
-        // Add series for minimum, average and maximum price
-        var min = myChart.addSeries("Min", dimple.plot.bubble, [x, y1]);
-        min.aggregate = dimple.aggregateMethod.min;
-        var avg = myChart.addSeries("Avg", dimple.plot.bubble, [x, y1]);
-        avg.aggregate = dimple.aggregateMethod.avg;
-        var max = myChart.addSeries("Max", dimple.plot.bubble, [x, y1]);
-        max.aggregate = dimple.aggregateMethod.max;
-        
-        myChart.draw();
-      });
+      // Data hack required to get revenue and profit on the same axis, units are
+      // arbitrarily allocated to revenue but the values will be summed by date
+      var data = [
+	  {"Year" : "1970",	"Number of Households" : 17626, "Average Household Size" : 3.04},
+	  {"Year" : "1980",	"Number of Households" : 18552, "Average Household Size" : 2.60},
+	  {"Year" : "1990",	"Number of Households" : 18819, "Average Household Size" : 2.37},
+	  {"Year" : "2000",	"Number of Households" : 19011, "Average Household Size" : 2.23},
+	  {"Year" : "2010",	"Number of Households" : 18969, "Average Household Size" : 2.26},
+	  {"Year" : "2020",	"Number of Households" : 19967, "Average Household Size" : 2.33},
+	  ];
+
+      var chart = new dimple.chart(svg, data);
+      chart.setBounds(60,20,680,330);
+
+      // Add your x axis - nothing unusual here
+      var x = chart.addCategoryAxis("x", "Year");
+      // First y axis is the combination axis for revenue and profit
+      var y1 = chart.addMeasureAxis("y", "Average Household Size");
+      // Second is the units only
+      var y2 = chart.addMeasureAxis("y", "Number of Households");
+
+      // Plot the bars first - the order of series determines their dom position
+      // from back to front, this means bars are at the back.  It's important
+      // to note that the string here "Unit Sales" is NOT in the data.  Any string
+      // not in the data is just used to apply a label which can be used for colouring
+      // as it is here and will also appear in tool tips
+      var bars = chart.addSeries("Year", dimple.plot.bar, [x,y2]);
+      // Use a simple line by metric for the other measures
+      var lines = chart.addSeries("Average Household Size", dimple.plot.line, [x,y1]);
+
+      // Do a bit of styling to make it look nicer
+      lines.lineMarkers = true;
+      bars.barGap = 0.5;
+      // Colour the bars manually so they don't overwhelm the lines
+      chart.assignColor("Year", "black", "black", 0.15);
+
+      x.dateParseFormat = "%Y";
+      x.addOrderRule("Date");
+
+
+      // Here's how you add a legend for just one series.  Excluding the last parameter
+      // will include every series or an array of series can be passed to select more than
+      // one
+
+
+      chart.draw();
+
+      // Once Draw is called, this just changes the number format in the tooltips which for these particular
+      // numbers is a little too heavily rounded.  I assume your real data isn't like this
+      // so you probably won't want this line, but it's a useful tip anyway!
+      //y1.tickFormat = ",d";
+
   </script>
   </body>
   </html>
