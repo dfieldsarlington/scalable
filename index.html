@@ -56,10 +56,11 @@
       // Do a bit of styling to make it look nicer
       s.lineMarkers = true;
 	  s.lineWeight = 4;
+	  s.assignColor = "red"
       bars.barGap = 0.25;
       // Colour the bars manually so they don't overwhelm the lines
       chart.assignColor("bars", "black", "black", 0.15);
-	  chart.assignColor("s", "Red");
+	  
       x.addOrderRule("Date");
 	  y1.tickFormat = ",d";
       chart.draw();
