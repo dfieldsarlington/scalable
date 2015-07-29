@@ -21,7 +21,7 @@
 <body>
 <div id="ScatterChart"></div>
    <script type="text/javascript">
-      var svg = dimple.newSvg("#ScatterChart", 800, 400);
+      var svg = dimple.newSvg("#ScatterChart", "80%", "100%");
 
       // Data hack required to get revenue and profit on the same axis, units are
       // arbitrarily allocated to revenue but the values will be summed by date
@@ -35,7 +35,7 @@
 	  ];
 
       var chart = new dimple.chart(svg, data);
-      chart.setBounds(60,20,680,330);
+      chart.setBounds(40,20,480,230);
 
       // Add your x axis - nothing unusual here
       var x = chart.addCategoryAxis("x", "Year");
@@ -52,10 +52,10 @@
       var bars = chart.addSeries("Year", dimple.plot.bar, [x,y2]);
       // Use a simple line by metric for the other measures
       var lines = chart.addSeries("Average Household Size", dimple.plot.line, [x,y1]);
-
+		lines.interpolation = "cardinal";
       // Do a bit of styling to make it look nicer
       lines.lineMarkers = true;
-      bars.barGap = 0.1;
+      bars.barGap = 0.4;
       // Colour the bars manually so they don't overwhelm the lines
       chart.assignColor("Year", "black", "black", 0.15);
 
