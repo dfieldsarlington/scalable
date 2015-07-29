@@ -40,9 +40,9 @@
       // Add your x axis - nothing unusual here
       var x = chart.addCategoryAxis("x", "Year");
       // First y axis is the combination axis for revenue and profit
-      var y1 = chart.addMeasureAxis("y", "Number of Households");
+      var y1 = chart.addMeasureAxis("y", "Average Household Size");
       // Second is the units only
-      var y2 = chart.addMeasureAxis("y", "Average Household Size");
+      var y2 = chart.addMeasureAxis("y", "Number of Households");
 
       // Plot the bars first - the order of series determines their dom position
       // from back to front, this means bars are at the back.  It's important
@@ -51,7 +51,7 @@
       // as it is here and will also appear in tool tips
       var bars = chart.addSeries("Number of Households", dimple.plot.bar, [x,y2]);
       // Use a simple line by metric for the other measures
-      var s = chart.addSeries("Average Household Size", dimple.plot.line, [x, y1]);
+      var s = chart.addSeries(null, dimple.plot.line, [x, y1]);
       s.interpolation = "cardinal";
       // Do a bit of styling to make it look nicer
       s.lineMarkers = true;
