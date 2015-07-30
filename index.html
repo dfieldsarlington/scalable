@@ -43,18 +43,13 @@
       var y1 = chart.addMeasureAxis("y", "Average Household Size");
       // Second is the units only
       var y2 = chart.addMeasureAxis("y", "Number of Households");
-
       // Plot the bars first - the order of series determines their dom position
       // from back to front, this means bars are at the back.  It's important
       // to note that the string here "Unit Sales" is NOT in the data.  Any string
       // not in the data is just used to apply a label which can be used for colouring
       // as it is here and will also appear in tool tips
-
-      var bars = chart.addSeries(null, dimple.plot.bar, [x,y1],);
-	  chart.assignColor("bars", "#B8B5B2");
-
+      var bars = chart.addSeries(null, dimple.plot.bar, [x,y1],)
       var bars = chart.addSeries(null, dimple.plot.bar, [x,y2]);
-
       // Use a simple line by metric for the other measures
       var s = chart.addSeries(null, dimple.plot.line, [x, y1]);
       s.interpolation = "cardinal";
@@ -64,8 +59,7 @@
 	  s.assignColor = "red"
       bars.barGap = 0.25;
       // Colour the bars manually so they don't overwhelm the lines
-      chart.assignColor("bars", "#B8B5B2");
-	  
+      chart.assignColor("bars", "black", "black", 0.15);
       x.addOrderRule("Date");
 	  y1.tickFormat = ",d";
       chart.draw();
