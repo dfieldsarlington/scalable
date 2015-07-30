@@ -33,10 +33,8 @@
 	  {"Year" : "2010",	"Number of Households" : 18969, "Average Household Size" : 2.26},
 	  {"Year" : "2020",	"Number of Households" : 19967, "Average Household Size" : 2.33},
 	  ];
-
       var chart = new dimple.chart(svg, data);
       chart.setBounds(40,20,480,230);
-
       // Add your x axis - nothing unusual here
       var x = chart.addCategoryAxis("x", "Year");
       // First y axis is the combination axis for revenue and profit
@@ -48,7 +46,7 @@
       // to note that the string here "Unit Sales" is NOT in the data.  Any string
       // not in the data is just used to apply a label which can be used for colouring
       // as it is here and will also appear in tool tips
-      var bars = chart.addSeries(null, dimple.plot.bar, [x,y1],)
+      
       var bars = chart.addSeries(null, dimple.plot.bar, [x,y2]);
       // Use a simple line by metric for the other measures
       var s = chart.addSeries(null, dimple.plot.line, [x, y1]);
