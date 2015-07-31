@@ -42,7 +42,7 @@
           var firstTick = true;
 
           // Place the indicator bar chart to the right
-          indicator.setBounds(434, 70, 153, 350);
+          indicator.setBounds(440, 100, 150, 300);
 
           // Add dates along the y axis
           var y = indicator.addCategoryAxis("y", "Year");
@@ -100,7 +100,7 @@
           bubbles.addMeasureAxis("x", "Employees");
           bubbles.addMeasureAxis("y", "Average Weekly Wage");
           bubbles.addSeries(["Sector"], dimple.plot.bubble)
-          bubbles.addLegend(60, 10, 410, 60);
+          bubbles.addLegend(40, 10, 410, 60);
 
           // Add a storyboard to the main chart and set the tick event
           var story = bubbles.setStoryboard("Year", onTick);
