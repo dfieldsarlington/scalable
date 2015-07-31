@@ -12,7 +12,7 @@
 	float: left;
 	top:10px;
 	left:10px;
-	width:60%;
+	width:450px;
 	height: 600px;
 	background-color: rgb(252,245,223);
 }
@@ -21,7 +21,7 @@
 <body>
 <div id="chartContainer"></div>
 <script type="text/javascript">
-      var svg = dimple.newSvg("#chartContainer", 590, 400);
+      var svg = dimple.newSvg("#chartContainer", "80%", "80%");
       d3.csv("https://raw.githubusercontent.com/dfieldsarlington/economicdevelopment/gh-pages/employment_sector_05_13.csv", function (data) {
 
           // Filter for 1 year
@@ -96,7 +96,7 @@
 
           // Draw the main chart
           var bubbles = new dimple.chart(svg, data);
-          bubbles.setBounds(60, 50, 355, 310)
+          
           bubbles.addMeasureAxis("x", "Employees");
           bubbles.addMeasureAxis("y", "Average Weekly Wage");
           bubbles.addSeries(["Sector"], dimple.plot.bubble)
