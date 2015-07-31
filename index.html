@@ -1,3 +1,25 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+
+<style>
+#chartContainer {    
+	float: left;
+	top:10px;
+	left:10px;
+	width:60%;
+	height: 600px;
+	background-color: rgb(252,245,223);
+}
+</style>
+</head>
+<body>
+<div id="chartContainer"></div>
 <script type="text/javascript">
       var svg = dimple.newSvg("#chartContainer", 590, 400);
       d3.csv("https://raw.githubusercontent.com/dfieldsarlington/economicdevelopment/gh-pages/employment_sector_05_13.csv", function (data) {
@@ -125,3 +147,5 @@
           }
       });
   </script>
+  </body>
+  </html>
