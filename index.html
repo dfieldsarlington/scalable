@@ -37,7 +37,7 @@
           var indicatorColor = indicator.defaultColors[2];
 
           // The frame duration for the animation in milliseconds
-          var frame = 1000;
+          var frame = 2500;
 
           var firstTick = true;
 
@@ -49,7 +49,7 @@
           y.addOrderRule("Date", "Desc");
 
           // Use sales for bar size and hide the axis
-          var x = indicator.addMeasureAxis("x", "Total");
+          var x = indicator.addMeasureAxis("x", "Year");
           x.hidden = true;
 
           // Add the bars to the indicator and add event handlers
@@ -96,7 +96,7 @@
 
           // Draw the main chart
           var bubbles = new dimple.chart(svg, data);
-          
+          bubbles.setBounds(60, 50, 355, 310)
           bubbles.addMeasureAxis("x", "Employees");
           bubbles.addMeasureAxis("y", "Average Weekly Wage");
           bubbles.addSeries(["Sector"], dimple.plot.bubble)
