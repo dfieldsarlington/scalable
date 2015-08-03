@@ -32,7 +32,7 @@ p {
 	top:10px;
 	left:10px;
 	width: 700px;
-	height: 700px
+	height: 700px;
 	background-color: rgb(252,245,223);
 }	
 
@@ -86,7 +86,7 @@ var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
       var LineLegend = LineChart.addLegend (80, 230, 85, 290, "right");
 		// Create a storyboard for Race Year
 		var LineStoryboard = LineChart.setStoryboard("Area");
-		LineStoryboard.categoryFields = [null];
+		LineStoryboard.categoryFields = ["Area"];
 		LineChart.draw();
          // This is a critical step.  By doing this we orphan the legend. This
         // means it will not respond to graph updates.  Without this the legend
