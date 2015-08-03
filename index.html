@@ -81,10 +81,10 @@ var svgLine = dimple.newSvg("#LineChart", "90%", "85%");
       x.addOrderRule("Year");
       LineChart.addMeasureAxis("y", "Median Household Income 2015 Adjusted");
       var s = LineChart.addSeries("Area", dimple.plot.line);
-	  s.addOrderRule("Area", "Desc");
+	  s.addOrderRule("Area");
       s.interpolation = "cardinal";
       s.lineMarkers = true;
-      var LineLegend = LineChart.addLegend (350, 100, 75, 300, "right");
+      var LineLegend = LineChart.addLegend (350, 100, "10%", "100%", "right");
 	  LineLegend.fontSize = "auto";
 		// Create a storyboard for Race Year
 		var LineStoryboard = LineChart.setStoryboard("Area");
