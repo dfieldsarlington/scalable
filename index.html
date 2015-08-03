@@ -81,7 +81,7 @@ p {
           var indicator = new dimple.chart(svg, data);
 
           // Pick blue as the default and orange for the selected month
-          var defaultColor = indicator.defaultColors[#FCF5DF];
+          var defaultColor = indicator.defaultColors[0];
           var indicatorColor = indicator.defaultColors[2];
 
           // The frame duration for the animation in milliseconds
@@ -97,7 +97,7 @@ p {
           y.addOrderRule("Date", "Desc");
 
           // Use sales for bar size and hide the axis
-          var x = indicator.addMeasureAxis("x", "age");
+          var x = indicator.addMeasureAxis("x", "people");
           x.hidden = true;
 
           // Add the bars to the indicator and add event handlers
@@ -145,7 +145,6 @@ p {
 	  var BarChart = new dimple.chart(svg, data);			  
       BarChart.setBounds(60, 160, 355, 310)
 	  var BarChartAxis = BarChart.addMeasureAxis("x", "people");
-	  people.barGap = 0.2;
 	  BarChartAxis.overrideMin = -4500;
 	  BarChartAxis.overrideMax = 4500;
       var y = BarChart.addCategoryAxis("y", "age");
