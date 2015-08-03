@@ -97,7 +97,7 @@ p {
           y.addOrderRule("Date", "Desc");
 
           // Use sales for bar size and hide the axis
-          var x = indicator.addMeasureAxis("x", "people");
+          var x = indicator.addMeasureAxis("x", null);
           x.hidden = true;
 
           // Add the bars to the indicator and add event handlers
@@ -145,6 +145,7 @@ p {
 	  var BarChart = new dimple.chart(svg, data);			  
       BarChart.setBounds(60, 160, 355, 310)
 	  var BarChartAxis = BarChart.addMeasureAxis("x", "people");
+	  BarChartAxis.barGap = 0.2;
 	  BarChartAxis.overrideMin = -4500;
 	  BarChartAxis.overrideMax = 4500;
       var y = BarChart.addCategoryAxis("y", "age");
