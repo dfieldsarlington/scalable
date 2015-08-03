@@ -81,7 +81,7 @@ p {
           var indicator = new dimple.chart(svg, data);
 
           // Pick blue as the default and orange for the selected month
-          var defaultColor = indicator.defaultColors["#FCF5DF"];
+          var defaultColor = indicator.defaultColors[new dimple.color("#FCF5DF")];
           var indicatorColor = indicator.defaultColors[2];
 
           // The frame duration for the animation in milliseconds
