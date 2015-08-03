@@ -32,7 +32,7 @@ p {
 	top:10px;
 	left:10px;
 	width: 700px;
-	height: 600px
+	height: 700px
 	background-color: rgb(252,245,223);
 }	
 
@@ -73,7 +73,7 @@ p {
 
     <script type="text/javascript">
 //Start Line Chart
-var svgLine = dimple.newSvg("#LineChart", "70%", "80%");
+var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/hhincome.csv", function (data) {
       dimple.filterData(data, "Year", ["1960", "1970", "1980", "1990", "2000", "2010", "2020"]);
       var LineChart = new dimple.chart(svgLine, data);
