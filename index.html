@@ -145,7 +145,8 @@ p {
 	  var BarChart = new dimple.chart(svg, data);			  
       BarChart.setBounds(60, 160, 355, 310)
 	  var BarChartAxis = BarChart.addMeasureAxis("x", "people");
-	 
+	  BarChartAxis.overrideMin = -4500;
+	  BarChartAxis.overrideMax = 4500;
       var y = BarChart.addCategoryAxis("y", "age");
       y.addOrderRule("age");
       BarChart.addSeries("sex", dimple.plot.bar);
