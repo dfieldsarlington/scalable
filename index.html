@@ -31,8 +31,8 @@ p {
 	float: left;
 	top:10px;
 	left:10px;
-	width: 700px;
-	height: 700px;
+	width: 500px;
+	height: 500px;
 	background-color: rgb(252,245,223);
 }	
 
@@ -73,7 +73,7 @@ p {
 
     <script type="text/javascript">
 //Start Line Chart
-var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
+var svgLine = dimple.newSvg("#LineChart", "90%", "85%");
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/hhincome.csv", function (data) {
       dimple.filterData(data, "Year", ["1960", "1970", "1980", "1990", "2000", "2010", "2020"]);
       var LineChart = new dimple.chart(svgLine, data);
@@ -81,9 +81,10 @@ var svgLine = dimple.newSvg("#LineChart", "100%", "100%");
       x.addOrderRule("Year");
       LineChart.addMeasureAxis("y", "Median Household Income 2015 Adjusted");
       var s = LineChart.addSeries("Area", dimple.plot.line);
+	  s.addOrderRule("Area", "Desc");
       s.interpolation = "cardinal";
       s.lineMarkers = true;
-      var LineLegend = LineChart.addLegend (80, 230, 85, 290, "right");
+      var LineLegend = LineChart.addLegend (250, 230, 85, 290, "right");
 		// Create a storyboard for Race Year
 		var LineStoryboard = LineChart.setStoryboard("Area");
 		LineStoryboard.categoryFields = [null];
