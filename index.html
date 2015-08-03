@@ -31,8 +31,8 @@ p {
 	float: left;
 	top:10px;
 	left:10px;
-	width: 500px;
-	height: 500px;
+	width: 60%;
+	height: 600px;
 	background-color: rgb(252,245,223);
 }	
 
@@ -73,7 +73,7 @@ p {
 
     <script type="text/javascript">
 //Start Line Chart
-var svgLine = dimple.newSvg("#LineChart", "90%", "85%");
+var svgLine = dimple.newSvg("#LineChart", "80%", "85%");
     d3.csv("https://raw.githubusercontent.com/dfieldsarlington/demographics/gh-pages/hhincome.csv", function (data) {
       dimple.filterData(data, "Year", ["1960", "1970", "1980", "1990", "2000", "2010", "2020"]);
       var LineChart = new dimple.chart(svgLine, data);
@@ -84,7 +84,8 @@ var svgLine = dimple.newSvg("#LineChart", "90%", "85%");
 	  s.addOrderRule("Area");
       s.interpolation = "cardinal";
       s.lineMarkers = true;
-      var LineLegend = LineChart.addLegend (350, 100, "10%", "100%", "right");
+	  s.lineWeight = 2;
+      var LineLegend = LineChart.addLegend ("70%", "5%", "20%", "100%", "right");
 	  LineLegend.fontSize = "auto";
 		// Create a storyboard for Race Year
 		var LineStoryboard = LineChart.setStoryboard("Area");
