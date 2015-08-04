@@ -86,8 +86,8 @@ var svgLineLegend = dimple.newSvg("#LineChart", "20%", "50%");
       s.interpolation = "cardinal";
       s.lineMarkers = true;
 	  s.lineWeight = 3;
-      var LineLegend = LineChart.addLegend (svgLineLegend);
-	  LineLegend.fontSize = "auto";
+      s.addLegend (svgLineLegend);
+	  sLegend.fontSize = "auto";
 		// Create a storyboard for Race Year
 		var LineStoryboard = LineChart.setStoryboard("Area");
 		LineStoryboard.categoryFields = [null];
