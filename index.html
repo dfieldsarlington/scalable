@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>Arlington Demographics</title>
+<title>Arlington Household Income</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
@@ -12,58 +12,13 @@
 body {
     background-color: rgb(252,245,223);
 }
-p {
-    font: 12px/18px Arial,Helvetica,sans-serif;
-	color: #545454;
-	}
-	
-#PieChart {    
-	float: left;
-	top:10px;
-	left:10px;
-	width: 50%;
-	height: 400px;
-	background-color: rgb(252,245,223);
-	cursor: pointer;
-}
-
 #LineChart {    
 	float: left;
 	top:10px;
 	left:10px;
-	width: 60%;
-	height: 600px;
+	width: 100%;
+	height: 100%;
 	background-color: rgb(252,245,223);
-}	
-
-#HHLineChart {    
-	float: right;
-	top:10px;
-	left:10px;
-	width: 45%;
-	height: 600px
-	background-color: rgb(252,245,223);
-}
-
-#BarChart {    
-	float: right;
-	top:10px;
-	width: 50%;
-	height: 400px;
-	background-color: rgb(252,245,223);
-}
-
-#block {
-            background-color: #FCF5DF;
-            border: solid 0px #c0504d;
-            float: right;
-            margin-top: 10px;
-            padding: 2px;
-            margin-left: 2px;
-			}
-.title {
-  font: 300 35px Helvetica Neue;
-  fill: #666;
 }
 </style>
 </head>
@@ -87,26 +42,15 @@ var svgLine = dimple.newSvg("#LineChart", "80%", "85%");
 	  s.lineWeight = 3;
       var LineLegend = LineChart.addLegend ("81%", "17%", "20%", "100%", "right");
 	  LineLegend.fontSize = "auto";
-		// Create a storyboard for Race Year
 		var LineStoryboard = LineChart.setStoryboard("Area");
 		LineStoryboard.categoryFields = [null];
 		LineChart.draw();
-         // This is a critical step.  By doing this we orphan the legend. This
-        // means it will not respond to graph updates.  Without this the legend
-        // will redraw when the chart refreshes removing the unchecked item and
-        // also dropping the events we define below.
         LineChart.legends = [];
-
-        // Get a unique list of values to use when filtering
         var filterValues = dimple.getUniqueValues(data, "Area");
-        // Get all the rectangles from our now orphaned legend
         LineLegend.shapes.selectAll("rect")
-          // Add a click event to each rectangle
           .on("click", function (e) {
-            // This indicates whether the item is already visible or not
             var hide = false;
             var newFilters = [];
-            // If the filters contain the clicked shape hide it
             filterValues.forEach(function (f) {
               if (f === e.aggField.slice(-1)[0]) {
                 hide = true;
@@ -114,19 +58,14 @@ var svgLine = dimple.newSvg("#LineChart", "80%", "85%");
                 newFilters.push(f);
               }
             });
-            // Hide the shape or show it
             if (hide) {
               d3.select(this).style("opacity", 0.2);
             } else {
               newFilters.push(e.aggField.slice(-1)[0]);
               d3.select(this).style("opacity", 0.8);
             }
-            // Update the filters
             filterValues = newFilters;
-            // Filter the data
             LineChart.data = dimple.filterData(data, "Area", filterValues);
-            // Passing a duration parameter makes the chart animate. Without
-            // it there is no transition
             LineChart.draw(800);
           });
 		  
