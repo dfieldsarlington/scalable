@@ -40,11 +40,12 @@ var svgLine = dimple.newSvg("#LineChart", "80%", "90%");
       s.interpolation = "cardinal";
       s.lineMarkers = true;
 	  s.lineWeight = 3;
-      var LineLegend = LineChart.addLegend ("95%", "18%", "12%", "100%", "right");
+      var LineLegend = LineChart.addLegend ("93%", "18%", "10%", "100%", "right");
 	  LineLegend.fontSize = "auto";
 		var LineStoryboard = LineChart.setStoryboard("Area");
 		LineStoryboard.categoryFields = [null];
 		LineChart.draw();
+		LineStoryboard.storyLabel.remove();
         LineChart.legends = [];
         var filterValues = dimple.getUniqueValues(data, "Area");
         LineLegend.shapes.selectAll("rect")
